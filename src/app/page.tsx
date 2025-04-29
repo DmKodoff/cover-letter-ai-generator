@@ -4,7 +4,6 @@ import Header from '@/components/layout/Header'
 import MotivationBanner from '@/components/features/MotivationBanner'
 import LetterCard from '@/components/features/LetterCard'
 import { useLetterStore } from '@/store/letterStore'
-import FontFixel from '@/components/ui/Fonts/FixelFont'
 
 import st from './page.module.scss'
 
@@ -24,7 +23,6 @@ export default function Dashboard() {
   return (
     <main className={st.main}>
       <Header />
-      <FontFixel />
       <div className={st.container}>
         <h1 className={st.title}>Applications</h1>
         <MotivationBanner
