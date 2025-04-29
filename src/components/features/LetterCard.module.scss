@@ -1,0 +1,58 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.card {
+  @include card-base;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: $spacing-md;
+}
+
+.content {
+  position: relative;
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.text {
+  margin: 0;
+  white-space: pre-line;
+  line-height: 1.5;
+  color: $text-color;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  );
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  padding-top: $spacing-md;
+  border-top: 1px solid $border-color;
+  margin-top: $spacing-md;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+}
+
+.deleteButton,
+.copyButton {
+  font-size: $font-size-sm;
+  padding: $spacing-xs $spacing-md;
+
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+}

@@ -1,7 +1,12 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  reactStrictMode: true,
+  // Конфигурация для локальных шрифтов
+  assetPrefix: '.',
+  publicRuntimeConfig: {
+    staticFolder: '/public',
+  },
+}
 
-export default nextConfig;
+export default nextConfig
