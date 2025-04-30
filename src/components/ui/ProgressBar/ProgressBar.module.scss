@@ -9,7 +9,7 @@
 }
 
 .bar {
-  background-color: $text-secondary;
+  background-color: color.change($text-primary, $alpha: 0.24);
   transition: background-color $transition-duration $transition-timing;
   border-radius: 4px;
   height: 8px;
@@ -23,8 +23,9 @@
     width: 8px;
   }
 
-  .bar & {
+  .bars & {
     flex: 1;
+    width: 100%;
   }
 }
 

@@ -1,0 +1,74 @@
+@use '../../../styles/variables.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.banner {
+  @include flex-column;
+  background-color: $primary-bg-light;
+  border-radius: $border-radius-card;
+  align-items: center;
+  min-height: 376px;
+  margin-bottom: $spacing-xl;
+  padding-block: 54px;
+
+  @include mobile {
+    min-height: inherit;
+    flex-direction: column;
+    gap: $spacing-md;
+    align-items: flex-start;
+  }
+}
+
+.content {
+  @include flex-column;
+  align-items: center;
+  text-align: center;
+  gap: $spacing-md;
+  max-width: 480px;
+}
+
+.title {
+  font-family: $fixel-display;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: $text-primary;
+  margin: 0;
+}
+
+.text {
+  color: $text-secondary;
+  font-size: $font-size-lg;
+  margin: 0;
+}
+
+.btn {
+  @include flex-center;
+  gap: 16px;
+  font-size: $font-size-lg;
+  padding: 16px 28px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.icon {
+  width: 20px;
+}
+
+.progressWrapper {
+  margin-top: $spacing-xl;
+}
+
+.progress {
+  width: 192px;
+}
+
+.progressDescription {
+  color: $text-secondary;
+  font-size: $font-size-lg;
+  font-weight: 400;
+  line-height: 28px;
+  margin-top: 8px;
+  text-align: center;
+}

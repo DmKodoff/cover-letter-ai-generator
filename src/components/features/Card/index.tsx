@@ -2,6 +2,8 @@ import React from 'react'
 import Button from '../../ui/Button'
 
 import st from './LetterCard.module.scss'
+import { IconCopy, IconTrash } from '@/assets'
+import cn from 'classnames'
 
 type LetterCardProps = {
   id: string
@@ -19,10 +21,9 @@ const LetterCard: React.FC<LetterCardProps> = ({
   }
 
   const handleCopy = () => {
-    // onCopy(content)
+    navigator.clipboard.writeText(content)
   }
 
-  // Получаем первые 4 строки письма для предпросмотра
   const previewContent = content.split('\n').slice(0, 4).join('\n')
 
   return (
@@ -33,18 +34,16 @@ const LetterCard: React.FC<LetterCardProps> = ({
       </div>
       <div className={st.actions}>
         <Button
-          variant='secondary'
+          variant='clear'
           onClick={handleDelete}
           className={st.deleteButton}
         >
-          Удалить
+          <IconTrash className={st.icon} />
+          <span className={st.buttonText}>Delete</span>
         </Button>
-        <Button
-          variant='secondary'
-          onClick={handleCopy}
-          className={st.copyButton}
-        >
-          Копировать в буфер
+        <Button variant='clear' onClick={handleCopy} className={st.copyButton}>
+          <span className={st.buttonText}>Copy to clipboard</span>
+          <IconCopy className={cn(st.icon, st.copy)} />
         </Button>
       </div>
     </div>

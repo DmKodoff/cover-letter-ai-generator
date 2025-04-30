@@ -1,0 +1,35 @@
+@use '../../../styles/variables.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.container {
+  @include flex-between;
+  flex: 1;
+  padding-bottom: $spacing-md;
+  border-bottom: 1px solid $border-divider;
+}
+
+.title {
+  font-family: $fixel-display;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: $text-primary;
+}
+
+.btn {
+  @include flex-center;
+  gap: 10px;
+  padding-block: 10px;
+  padding-inline: $font-size-lg;
+}
+
+.icon {
+  width: $font-size-xs;
+}
+
+.buttonText {
+  @include mobile {
+    display: none;
+  }
+}

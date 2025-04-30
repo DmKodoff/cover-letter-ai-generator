@@ -1,5 +1,5 @@
-@use '../../styles/variables.scss' as *;
-@use '../../styles/mixins.scss' as *;
+@use '../../../styles/variables.scss' as *;
+@use '../../../styles/mixins.scss' as *;
 @use 'sass:color';
 
 .button {
@@ -8,9 +8,11 @@
   &-primary {
     background-color: $primary-color;
     color: $text-light;
+    box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
 
     &:hover {
       background-color: $primary-dark;
+      color: $text-light;
     }
 
     &:active {
@@ -30,6 +32,7 @@
 
     &:hover {
       background-color: $background-secondary;
+      color: $text-color;
     }
 
     &:active {
@@ -41,9 +44,25 @@
       cursor: not-allowed;
     }
   }
-}
 
-.icon {
-  display: inline-flex;
-  margin-right: $spacing-sm;
+  &-clear {
+    background-color: transparent;
+    color: $text-tertiary;
+    padding: $spacing-sm $spacing-md;
+    border: none;
+
+    &:hover {
+      color: $text-secondary;
+      background-color: transparent;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+
+    &:disabled {
+      color: $gray-400;
+      cursor: not-allowed;
+    }
+  }
 }
