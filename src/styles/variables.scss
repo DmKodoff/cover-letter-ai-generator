@@ -1,17 +1,28 @@
 // Цветовая палитра
-$primary-color: #2e7d32; // Зеленый цвет для акцентных элементов
+// Основные цвета
+$primary-color: #2e7d32;
 $primary-light: #4caf50;
 $primary-dark: #1b5e20;
+$primary-darker: #087443; // Цвет кнопки из дизайна
+$primary-bg-light: #edfcf2; // Светлый фон для блоков
 
-$text-color: #171717;
-$text-secondary: #757575;
+// Текстовые цвета
+$text-color: #344054;
+$text-primary: #101828; // Основной текст из дизайна
+$text-secondary: #667085; // Вторичный текст из дизайна
+$text-tertiary: #475467; // Третичный текст из дизайна
 $text-light: #ededed;
 
+// Фоновые цвета
 $background-color: #ffffff;
 $background-secondary: #f5f5f5;
+$background-tertiary: #f2f4f7; // Третичный фон из дизайна
 $background-card: #ffffff;
 
+// Границы и формы
 $border-color: #e0e0e0;
+$border-light: #d0d5dd; // Светлая граница из дизайна
+$border-divider: #eaecf0; // Цвет разделителя из дизайна
 $border-radius: 6px;
 $border-radius-card: 12px;
 
@@ -21,6 +32,10 @@ $spacing-sm: 8px;
 $spacing-md: 16px;
 $spacing-lg: 24px;
 $spacing-xl: 32px;
+
+//Шрифты
+$fixel-display: var(--font-fixel-display);
+$fixel-text: var(--font-fixel-text);
 
 // Типографика
 $font-size-xs: 12px;
@@ -37,3 +52,16 @@ $box-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
 // Анимации
 $transition-duration: 0.3s;
 $transition-timing: ease-in-out;
+
+//#101828
+
+//background: #101828;
+//opacity: 0.24;
+
+//#475467
+//#667085
+//#F2F4F7
+
+$gray-500: #475467;
+$gray-400: #667085;
+$gray-100: #f2f4f7;

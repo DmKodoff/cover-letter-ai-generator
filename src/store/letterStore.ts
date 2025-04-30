@@ -1,28 +1,30 @@
+'use client'
+
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
 import { Letter } from '@/types/letter'
+import { createSelectors } from '@/lib/comon/createSelectors'
 
 interface LetterState {
   letters: Letter[]
   loading: boolean
   error: string | null
-  currentLetters: number
-  totalLetters: number
+  currentLettersCount: number
+  minCountLetters: number
   createLetter: (content: string) => Letter
   deleteLetter: (id: string) => void
-  loadLetters: () => void
 }
 
 const initialState = {
   letters: [],
   loading: false,
   error: null,
-  currentLetters: 0,
-  totalLetters: 5,
+  currentLettersCount: 0,
+  minCountLetters: 5,
 }
 
-export const useLetterStore = create<LetterState>()(
+const useLetterStoreBase = create<LetterState>()(
   persist(
     immer((set) => ({
       ...initialState,
@@ -34,18 +36,15 @@ export const useLetterStore = create<LetterState>()(
         }
         set((state) => {
           state.letters.push(newLetter)
-          state.currentLetters = state.letters.length
+          state.currentLettersCount = state.letters.length
         })
         return newLetter
       },
       deleteLetter: (id: string) => {
         set((state) => {
           state.letters = state.letters.filter((l) => l.id !== id)
-          state.currentLetters = state.letters.length
+          state.currentLettersCount = state.letters.length
         })
-      },
-      loadLetters: () => {
-        // Заглушка, так как persist сам загружает из localStorage
       },
     })),
     {
@@ -53,8 +52,10 @@ export const useLetterStore = create<LetterState>()(
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         letters: state.letters,
-        currentLetters: state.currentLetters,
+        currentLettersCount: state.currentLettersCount,
       }),
     }
   )
 )
+
+export const useLetterStore = createSelectors(useLetterStoreBase)

@@ -2,23 +2,12 @@
 @use '../../../styles/mixins.scss' as *;
 
 .header {
-  background-color: $background-color;
-  border-bottom: 1px solid $border-color;
-  padding: $spacing-md 0;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 $spacing-md;
-
-  @media (max-width: 768px) {
-    padding: 0 $spacing-sm;
-  }
-}
-
-.headerContent {
   @include flex-between;
+  background-color: $background-color;
+  max-width: 1200px;
+  padding: 0;
+  margin-top: $spacing-xl;
+  margin-inline: auto;
 }
 
 .logo {
@@ -34,27 +23,27 @@
 }
 
 .progressWrapper {
-  flex: 1;
-  margin: 0 $spacing-xl;
-  max-width: 500px;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-}
-
-.homeButton {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: $spacing-lg;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .homeLink {
   @include flex-center;
+
   color: $text-secondary;
-  transition: color $transition-duration $transition-timing;
+  transition: color border $transition-duration $transition-timing;
+  border-radius: $border-radius;
+  border: 1px solid $border-light;
+  box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+  padding: 10px;
+  width: 40px;
+  height: 40px;
 
   &:hover {
     color: $primary-color;
+    border: 1px solid $primary-color;
   }
 }

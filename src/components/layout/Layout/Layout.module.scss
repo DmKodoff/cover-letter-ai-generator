@@ -2,6 +2,8 @@
 @use '../../../styles/mixins.scss' as *;
 
 .main {
+  background-color: $background-color;
+  max-width: 1200px;
   min-height: 100vh;
-  background-color: $background-secondary;
+  margin: 0 auto;
 }

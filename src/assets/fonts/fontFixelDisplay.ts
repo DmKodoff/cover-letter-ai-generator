@@ -11,7 +11,7 @@ const fontFixelDisplay = localFont({
       style: 'normal',
     },
     {
-      path: './FixelDisplay-SemiBold.woff2',
+      path: './FixelDisplay-Bold.woff2',
       weight: '600',
       style: 'normal',
     },

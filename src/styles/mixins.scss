@@ -28,6 +28,7 @@
 }
 
 @mixin heading-1 {
+  font-family: $fixel-display;
   font-size: $font-size-xxl;
   font-weight: 700;
   line-height: 1.2;
@@ -35,6 +36,7 @@
 }
 
 @mixin heading-2 {
+  font-family: $fixel-display;
   font-size: $font-size-xl;
   font-weight: 700;
   line-height: 1.3;

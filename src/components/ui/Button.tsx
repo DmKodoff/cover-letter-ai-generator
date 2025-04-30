@@ -1,5 +1,7 @@
-import React from 'react'
-import styles from './Button.module.scss'
+import cn from 'classnames'
+import Link from 'next/link'
+
+import st from './Button.module.scss'
 
 type ButtonProps = {
   children: React.ReactNode
@@ -9,26 +11,38 @@ type ButtonProps = {
   disabled?: boolean
   className?: string
   icon?: React.ReactNode
+  href?: string
 }
 
 const Button: React.FC<ButtonProps> = ({
   children,
   variant = 'primary',
+  href,
   onClick,
   type = 'button',
   disabled = false,
   className = '',
-  icon,
 }) => {
+  const buttonContent = <>{children}</>
+
+  const buttonClassName = cn(st.button, st[`button-${variant}`], className)
+
+  if (href) {
+    return (
+      <Link href={href} className={buttonClassName}>
+        {buttonContent}
+      </Link>
+    )
+  }
+
   return (
     <button
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${styles.button} ${styles[`button-${variant}`]} ${className}`}
+      className={buttonClassName}
     >
-      {icon && <span className={styles.icon}>{icon}</span>}
-      {children}
+      {buttonContent}
     </button>
   )
 }

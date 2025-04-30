@@ -3,7 +3,6 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-import Header from '@/components/layout/Header'
 import Button from '@/components/ui/Button'
 import { useLetterStore } from '@/store/letterStore'
 
@@ -37,7 +36,6 @@ export default function CreateLetter() {
 
   return (
     <main className={st.main}>
-      <Header />
       <div className={st.container}>
         <h1 className={st.title}>Создание сопроводительного письма</h1>
 

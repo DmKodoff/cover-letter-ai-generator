@@ -1,51 +1,48 @@
 import React from 'react'
-import styles from './LetterCard.module.scss'
-import Button from '../ui/Button'
+import Button from '../../ui/Button'
+
+import st from './LetterCard.module.scss'
 
 type LetterCardProps = {
   id: string
   content: string
-  onDelete: (id: string) => void
-  onCopy: (content: string) => void
   className?: string
 }
 
 const LetterCard: React.FC<LetterCardProps> = ({
-  id,
+  // id,
   content,
-  onDelete,
-  onCopy,
   className = '',
 }) => {
   const handleDelete = () => {
-    onDelete(id)
+    // onDelete(id)
   }
 
   const handleCopy = () => {
-    onCopy(content)
+    // onCopy(content)
   }
 
   // Получаем первые 4 строки письма для предпросмотра
   const previewContent = content.split('\n').slice(0, 4).join('\n')
 
   return (
-    <div className={`${styles.card} ${className}`}>
-      <div className={styles.content}>
-        <p className={styles.text}>{previewContent}</p>
-        <div className={styles.overlay} />
+    <div className={`${st.card} ${className}`}>
+      <div className={st.content}>
+        <p className={st.text}>{previewContent}</p>
+        <div className={st.overlay} />
       </div>
-      <div className={styles.actions}>
+      <div className={st.actions}>
         <Button
           variant='secondary'
           onClick={handleDelete}
-          className={styles.deleteButton}
+          className={st.deleteButton}
         >
           Удалить
         </Button>
         <Button
           variant='secondary'
           onClick={handleCopy}
-          className={styles.copyButton}
+          className={st.copyButton}
         >
           Копировать в буфер
         </Button>

@@ -1,10 +1,11 @@
-'use client'
-import { Layout } from '@/components/layout/Layout'
+import LettersList from '@/components/features/LettersList'
+import MotivationBanner from '@/components/features/MotivationBanner'
 
 const Dashboard = () => (
-  <Layout>
-    <div>Dashboard</div>
-  </Layout>
+  <div>
+    <LettersList />
+    <MotivationBanner />
+  </div>
 )
 
 export default Dashboard

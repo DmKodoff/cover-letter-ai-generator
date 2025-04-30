@@ -1,0 +1,33 @@
+@use '../../../styles/variables.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+@use 'sass:color';
+
+.progressBar {
+  justify-content: center;
+  display: flex;
+  gap: $spacing-xs;
+}
+
+.bar {
+  background-color: $text-secondary;
+  transition: background-color $transition-duration $transition-timing;
+  border-radius: 4px;
+  height: 8px;
+
+  &.active {
+    background-color: $text-primary;
+  }
+
+  .dots & {
+    flex: 0 0 8px;
+    width: 8px;
+  }
+
+  .bar & {
+    flex: 1;
+  }
+}
+
+.bars {
+  width: 100%;
+}

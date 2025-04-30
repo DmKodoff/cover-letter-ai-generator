@@ -9,8 +9,8 @@ export const useLetters = () => {
   const [letters, setLetters] = useState<Letter[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [currentLetters, setCurrentLetters] = useState(0)
-  const totalLetters = 5 // Максимальное количество писем
+  const [currentLettersCount, setCurrentLetters] = useState(0)
+  const minCountLetters = 5 // Максимальное количество писем
 
   // Загрузка писем при монтировании компонента
   useEffect(() => {
@@ -65,8 +65,8 @@ export const useLetters = () => {
     letters,
     loading,
     error,
-    currentLetters,
-    totalLetters,
+    currentLettersCount,
+    minCountLetters,
     createLetter,
     deleteLetter,
     loadLetters,

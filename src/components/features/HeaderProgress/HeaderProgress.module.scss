@@ -1,0 +1,9 @@
+@use 'sass:color';
+@use '../../../styles/mixins.scss' as *;
+@use '../../../styles/variables.scss' as *;
+
+.progressBarWrapper {
+  @include flex-center;
+  color: $text-secondary;
+  gap: $spacing-md;
+}

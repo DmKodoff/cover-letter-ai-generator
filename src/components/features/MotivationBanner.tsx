@@ -1,45 +1,39 @@
-import React from 'react'
-import styles from './MotivationBanner.module.scss'
+'use client'
+
 import Button from '../ui/Button'
 import ProgressBar from '../ui/ProgressBar'
-import { useRouter } from 'next/navigation'
+import { useLetterStore } from '@/store/letterStore'
+
+import st from './MotivationBanner.module.scss'
 
 type MotivationBannerProps = {
-  current: number
-  total: number
   className?: string
 }
 
 const MotivationBanner: React.FC<MotivationBannerProps> = ({
-  current,
-  total,
   className = '',
 }) => {
-  const router = useRouter()
+  const current = useLetterStore.use.currentLettersCount()
 
-  const handleCreateNew = () => {
-    router.push('/create')
-  }
+  const total = useLetterStore.use.minCountLetters()
 
   if (current >= total) {
     return null
   }
 
   return (
-    <div className={`${styles.banner} ${className}`}>
-      <div className={styles.bannerContent}>
-        <h3 className={styles.bannerTitle}>
-          Создайте еще {total - current} писем
-        </h3>
-        <p className={styles.bannerDescription}>
+    <div className={`${st.banner} ${className}`}>
+      <div className={st.bannerContent}>
+        <h3 className={st.bannerTitle}>Создайте еще {total - current} писем</h3>
+        <p className={st.bannerDescription}>
           Чтобы получить максимальную пользу от приложения, рекомендуем создать
           не менее {total} писем
         </p>
-        <div className={styles.progressWrapper}>
-          <ProgressBar current={current} total={total} />
+        <div className={st.progressWrapper}>
+          <ProgressBar variant='bars' />
         </div>
       </div>
-      <Button onClick={handleCreateNew} variant='primary'>
+      <Button variant='primary' href='/create'>
         Создать новое письмо
       </Button>
     </div>
