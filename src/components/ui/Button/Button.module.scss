@@ -65,4 +65,24 @@
       cursor: not-allowed;
     }
   }
+
+  &-danger {
+    background-color: $error-color;
+    color: $text-light;
+    box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+
+    &:hover {
+      background-color: color.scale($error-color, $lightness: -10%);
+      color: $text-light;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+
+    &:disabled {
+      background-color: color.scale($error-color, $lightness: 20%);
+      cursor: not-allowed;
+    }
+  }
 }

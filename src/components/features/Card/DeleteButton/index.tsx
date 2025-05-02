@@ -24,6 +24,7 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({
     const confirmed = await openDialog(ConfirmDialog, {
       title: 'Delete letter',
       message: 'Are you sure you want to delete this letter?',
+      variant: 'danger',
     })
 
     if (confirmed) {

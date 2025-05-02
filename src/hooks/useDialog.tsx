@@ -6,6 +6,7 @@ type DialogProps = {
   onCancel: () => void
   title?: string
   message?: string
+  variant?: 'primary' | 'danger'
 }
 
 type DialogComponent = React.ComponentType<DialogProps>

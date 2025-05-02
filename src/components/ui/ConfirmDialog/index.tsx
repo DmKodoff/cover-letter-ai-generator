@@ -6,6 +6,7 @@ type ConfirmDialogProps = {
   onCancel: () => void
   title?: string
   message?: string
+  variant?: 'primary' | 'danger'
 }
 
 const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
@@ -13,6 +14,7 @@ const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
   onCancel,
   title = 'Confirmation',
   message = 'Are you sure you want to perform this action?',
+  variant = 'primary',
 }) => {
   return (
     <div>
@@ -22,7 +24,7 @@ const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
         <Button variant='secondary' onClick={onCancel}>
           Cancel
         </Button>
-        <Button variant='primary' onClick={onConfirm}>
+        <Button variant={variant} onClick={onConfirm}>
           Sure
         </Button>
       </div>

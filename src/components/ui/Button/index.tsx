@@ -5,7 +5,7 @@ import st from './Button.module.scss'
 
 type ButtonProps = {
   children: React.ReactNode
-  variant?: 'primary' | 'secondary' | 'clear'
+  variant?: 'primary' | 'secondary' | 'clear' | 'danger'
   onClick?: () => void
   type?: 'button' | 'submit' | 'reset'
   disabled?: boolean
