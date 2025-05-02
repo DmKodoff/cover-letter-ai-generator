@@ -74,19 +74,6 @@
   }
 }
 
-// Cards
-@mixin card-base {
-  background-color: $background-card;
-  border-radius: $border-radius-card;
-  box-shadow: $box-shadow;
-  padding: $spacing-lg;
-  transition: box-shadow $transition-duration $transition-timing;
-
-  &:hover {
-    box-shadow: $box-shadow-hover;
-  }
-}
-
 // Responsive
 @mixin mobile {
   @media (max-width: 767px) {
@@ -143,6 +130,7 @@
   border-radius: $border-radius;
   font-size: $font-size-md;
   transition: border-color $transition-duration $transition-timing;
+  box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
 
   &:focus {
     outline: none;

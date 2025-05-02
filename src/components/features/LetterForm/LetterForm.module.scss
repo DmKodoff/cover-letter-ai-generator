@@ -1,0 +1,64 @@
+@use '../../../styles/variables.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.form {
+  @include flex-column;
+  gap: $spacing-lg;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.field {
+  @include flex-column;
+  gap: &spacing-xs;
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: 500;
+  color: $text-color;
+}
+
+.input {
+  @include input-base;
+
+  &:disabled {
+    color: $text-tertiary;
+    cursor: not-allowed;
+  }
+}
+
+.textarea {
+  @extend .input;
+  min-height: 120px;
+  resize: vertical;
+}
+
+.error {
+  font-size: $font-size-xs;
+  color: $error-color;
+}
+
+.charCount {
+  font-size: $font-size-xs;
+  color: $text-secondary;
+  text-align: right;
+  margin-top: 4px;
+}
+
+.submitButton {
+  @include button-base;
+  background-color: $primary-color;
+  color: $background-color;
+  border: none;
+  margin-top: $spacing-md;
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}

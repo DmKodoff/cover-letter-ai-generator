@@ -4,5 +4,7 @@ export { default as IconHome } from './icons/home-icon.svg'
 export { default as IconPlus } from './icons/plus-icon.svg'
 export { default as IconRepeat } from './icons/repeat-icon.svg'
 export { default as IconTrash } from './icons/trash-icon.svg'
+export { default as IconLoading } from './icons/loading_icon.svg'
 
+export { default as ImageBall } from './icons/Ball.svg'
 export { default as LogoImage } from './images/Logo.svg'

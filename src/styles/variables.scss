@@ -19,6 +19,8 @@ $background-secondary: #f5f5f5;
 $background-tertiary: #f2f4f7; // Третичный фон из дизайна
 $background-card: #ffffff;
 
+$error-color: #f04438;
+
 // Границы и формы
 $border-color: #e0e0e0;
 $border-light: #d0d5dd; // Светлая граница из дизайна
@@ -32,6 +34,7 @@ $spacing-sm: 8px;
 $spacing-md: 16px;
 $spacing-lg: 24px;
 $spacing-xl: 32px;
+$spacing-xxl: 48px;
 
 //Шрифты
 $fixel-display: var(--font-fixel-display);

@@ -1,6 +1,5 @@
 @use 'sass:color';
-@use '../../../styles/mixins.scss' as *;
-@use '../../../styles/variables.scss' as *;
+@use '@/styles' as *;
 
 .progressBarWrapper {
   @include flex-center;

@@ -1,9 +1,11 @@
 import React from 'react'
 import Button from '../../ui/Button'
+import CopyButton from '../CopyButton'
 
 import st from './LetterCard.module.scss'
-import { IconCopy, IconTrash } from '@/assets'
+import { IconTrash } from '@/assets'
 import cn from 'classnames'
+import { useLetterStore } from '@/store/letterStore'
 
 type LetterCardProps = {
   id: string
@@ -12,22 +14,20 @@ type LetterCardProps = {
 }
 
 const LetterCard: React.FC<LetterCardProps> = ({
-  // id,
+  id,
   content,
   className = '',
 }) => {
+  const deleteLetter = useLetterStore.use.deleteLetter()
+
   const handleDelete = () => {
-    // onDelete(id)
+    deleteLetter(id)
   }
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(content)
-  }
-
-  const previewContent = content.split('\n').slice(0, 4).join('\n')
+  const previewContent = content.split('\n').slice(0, 6).join('\n')
 
   return (
-    <div className={`${st.card} ${className}`}>
+    <div className={cn(st.card, className)}>
       <div className={st.content}>
         <p className={st.text}>{previewContent}</p>
         <div className={st.overlay} />
@@ -41,10 +41,7 @@ const LetterCard: React.FC<LetterCardProps> = ({
           <IconTrash className={st.icon} />
           <span className={st.buttonText}>Delete</span>
         </Button>
-        <Button variant='clear' onClick={handleCopy} className={st.copyButton}>
-          <span className={st.buttonText}>Copy to clipboard</span>
-          <IconCopy className={cn(st.icon, st.copy)} />
-        </Button>
+        <CopyButton text={content} className={st.copyButton} />
       </div>
     </div>
   )

@@ -8,18 +8,11 @@ import st from './LettersList.module.scss'
 const LettersList = () => {
   const letters = useLetterStore.use.letters()
   return (
-    <div className={st.container}>
-      {letters.length > 0 && (
-        <div className={st.letterGrid}>
-          {letters.map((letter) => (
-            <LetterCard
-              key={letter.id}
-              id={letter.id}
-              content={letter.content}
-            />
-          ))}
-        </div>
-      )}
+    <div className={st.list}>
+      {letters.length > 0 &&
+        letters.map((letter) => (
+          <LetterCard key={letter.id} id={letter.id} content={letter.content} />
+        ))}
     </div>
   )
 }

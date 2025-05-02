@@ -1,0 +1,38 @@
+@use '@/styles' as *;
+
+.copyButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+
+  &.copied {
+    color: #4caf50;
+  }
+}
+
+.buttonText {
+  @media (max-width: 768px) {
+    display: none;
+  }
+
+  .showTextOnMobile & {
+    @media (max-width: 768px) {
+      display: inline;
+    }
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  transition: all 0.2s ease;
+}
+
+.copyIcon {
+  color: currentColor;
+}
+
+.copiedIcon {
+  color: $primary-light;
+}
