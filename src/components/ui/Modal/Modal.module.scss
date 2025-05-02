@@ -1,0 +1,88 @@
+@use '@/styles' as *;
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(16, 24, 40, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn $transition-duration $transition-timing;
+}
+
+.modal {
+  background-color: $background-color;
+  border-radius: $border-radius-card;
+  padding: $spacing-xl;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  box-shadow: $box-shadow;
+  animation: slideIn $transition-duration $transition-timing;
+}
+
+.closeButton {
+  position: absolute;
+  top: $spacing-md;
+  right: $spacing-md;
+  background: none;
+  border: none;
+  font-size: $font-size-xl;
+  color: $text-tertiary;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color $transition-duration $transition-timing;
+
+  &:hover {
+    color: $text-primary;
+  }
+}
+
+.content {
+  width: 100%;
+}
+
+.title {
+  font-family: $fixel-display;
+  font-weight: 600;
+  font-size: $font-size-xl;
+  color: $text-primary;
+  margin-bottom: $spacing-md;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $spacing-md;
+  margin-top: $spacing-xl;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
