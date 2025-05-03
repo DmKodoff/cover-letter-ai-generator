@@ -36,6 +36,10 @@
   gap: $spacing-lg;
   justify-content: flex-end;
   width: 100%;
+
+  @include mobile {
+    gap: $spacing-sm;
+  }
 }
 
 .homeLink {
@@ -56,6 +60,8 @@
   }
 
   @include mobile {
-    display: none;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
   }
 }

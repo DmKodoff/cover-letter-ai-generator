@@ -1,0 +1,23 @@
+@use '@/styles' as *;
+
+.container {
+  @include flex-column;
+}
+
+.list {
+  order: 2;
+}
+
+.banner {
+  order: 3;
+}
+
+@include mobile {
+  .list {
+    order: 3;
+  }
+
+  .banner {
+    order: 2;
+  }
+}
