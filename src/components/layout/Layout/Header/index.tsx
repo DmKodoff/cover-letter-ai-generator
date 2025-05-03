@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import { IconHome } from '@/assets'
 import HeaderProgress from '@/components/features/HeaderProgress'
-import Logo from '@/components/ui/Logo'
+import Logo from '@/components/layout/Layout/Logo'
 
 import st from './Header.module.scss'
 

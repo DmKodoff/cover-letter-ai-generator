@@ -5,8 +5,8 @@
   background-color: $background-color;
   padding-top: $spacing-lg;
   padding-bottom: $spacing-xl;
-  max-width: 1120px;
   height: $header-height;
+  max-width: 1120px;
   margin-inline: auto;
 
   @include mobile {
@@ -16,18 +16,6 @@
     padding-inline: $spacing-md;
     width: 100%;
   }
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.logoText {
-  font-size: $font-size-xl;
-  font-weight: 700;
-  color: $primary-color;
 }
 
 .progressWrapper {

@@ -1,13 +1,17 @@
 import dynamic from 'next/dynamic'
+
 import { IconTrash } from '@/assets'
 import { useDialog } from '@/hooks/useDialog'
-import Button from '../../../ui/Button'
+import Button from '@/components/ui/Button'
 
 import st from './DeleteButton.module.scss'
 
-const ConfirmDialog = dynamic(() => import('@/components/ui/ConfirmDialog'), {
-  ssr: false,
-})
+const ConfirmDialog = dynamic(
+  () => import('@/components/features//Card/ConfirmDialog'),
+  {
+    ssr: false,
+  }
+)
 
 type DeleteButtonProps = {
   onDelete: () => void
