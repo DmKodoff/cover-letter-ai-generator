@@ -5,4 +5,15 @@
   @include flex-center;
   color: $text-secondary;
   gap: $spacing-md;
+  font-size: $font-size-lg;
+  line-height: 28px;
+}
+
+.success {
+  @include flex-center;
+  border-radius: 50%;
+  background-color: $primary-bg-light;
+  color: $primary-light;
+  width: 28px;
+  height: 28px;
 }

@@ -1,5 +1,4 @@
-@use '../../../styles/variables.scss' as *;
-@use '../../../styles/mixins.scss' as *;
+@use '@/styles' as *;
 @use 'sass:color';
 
 .button {
@@ -20,7 +19,8 @@
     }
 
     &:disabled {
-      background-color: color.scale($primary-color, $lightness: 20%);
+      background-color: $border-light;
+      color: $text-secondary;
       cursor: not-allowed;
     }
   }

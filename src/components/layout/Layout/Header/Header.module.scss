@@ -1,13 +1,13 @@
-@use '../../../../styles/variables.scss' as *;
-@use '../../../../styles/mixins.scss' as *;
+@use '@/styles' as *;
 
 .header {
   @include flex-between;
   background-color: $background-color;
   max-width: 1120px;
-  padding: 0;
-  margin-block: $spacing-lg;
   margin-inline: auto;
+  margin-top: $spacing-lg;
+  margin-bottom: $spacing-xl;
+  padding: 0;
 }
 
 .logo {

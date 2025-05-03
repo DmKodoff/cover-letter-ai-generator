@@ -14,17 +14,16 @@ $text-tertiary: #475467; // Третичный текст из дизайна
 $text-light: #ededed;
 
 // Фоновые цвета
-$background-color: #ffffff;
+$background-color: white;
 $background-secondary: #f5f5f5;
 $background-tertiary: #f2f4f7; // Третичный фон из дизайна
-$background-card: #ffffff;
 
 $error-color: #f04438;
 
 // Границы и формы
 $border-color: #e0e0e0;
-$border-light: #d0d5dd; // Светлая граница из дизайна
-$border-divider: #eaecf0; // Цвет разделителя из дизайна
+$border-light: #d0d5dd;
+$border-divider: #eaecf0;
 $border-radius: 6px;
 $border-radius-card: 12px;
 
@@ -68,3 +67,5 @@ $transition-timing: ease-in-out;
 $gray-500: #475467;
 $gray-400: #667085;
 $gray-100: #f2f4f7;
+
+$white: #fff;

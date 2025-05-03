@@ -18,7 +18,7 @@ const HeaderProgress = () => {
     if (isSuccess) {
       return (
         <div className={st.success}>
-          <IconCheck width={16} height={16} />
+          <IconCheck width={14} />
         </div>
       )
     }

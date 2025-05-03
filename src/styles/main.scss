@@ -40,6 +40,11 @@ select {
   @include input-base;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 label {
   @include form-label;
 }

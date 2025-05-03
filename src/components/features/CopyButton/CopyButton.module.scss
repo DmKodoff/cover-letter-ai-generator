@@ -9,6 +9,11 @@
   &.copied {
     color: #4caf50;
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 .buttonText {

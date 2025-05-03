@@ -10,12 +10,14 @@ type CopyButtonProps = {
   text: string
   className?: string
   showTextOnMobile?: boolean
+  disabled?: boolean
 }
 
 const CopyButton: React.FC<CopyButtonProps> = ({
   text,
   className = '',
   showTextOnMobile = false,
+  disabled,
 }) => {
   const [isCopied, setIsCopied] = useState(false)
 
@@ -42,6 +44,7 @@ const CopyButton: React.FC<CopyButtonProps> = ({
         [st.copied]: isCopied,
         [st.showTextOnMobile]: showTextOnMobile,
       })}
+      disabled={disabled}
     >
       {!isCopied ? (
         <>

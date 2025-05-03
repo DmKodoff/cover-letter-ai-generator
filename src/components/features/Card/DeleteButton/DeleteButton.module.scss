@@ -1,9 +1,11 @@
+@use '@/styles' as *;
+
 .icon {
-  width: 16px;
-  height: 16px;
+  width: 20px;
   margin-right: 8px;
 }
 
 .buttonText {
-  font-size: 14px;
+  font-size: $font-size-md;
+  line-height: $spacing-lg;
 }

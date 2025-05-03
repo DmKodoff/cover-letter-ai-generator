@@ -1,25 +1,36 @@
 'use client'
 
 import cn from 'classnames'
-import { useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
+import { memo, useEffect } from 'react'
 
-import { useLetterStore } from '@/store/letterStore'
-import { IconLoading } from '@/assets'
+import { IconLoading, IconRepeat } from '@/assets'
 
 import st from './LetterForm.module.scss'
+import Button from '@/components/ui/Button'
 
 const MAX_CHARTS = 1200
 
-const LetterForm = () => {
-  const [isLoading, setIsLoading] = useState(false)
-  const createLetter = useLetterStore.use.createLetter()
+type LetterFormProps = {
+  onSubmit: (data: LetterFormData) => Promise<void>
+  onFormChange?: (data: LetterFormData, isValid: boolean) => void
+  isGenerating?: boolean
+  isRetry?: boolean
+  onRetry?: () => void
+}
 
+const LetterForm: React.FC<LetterFormProps> = ({
+  onSubmit,
+  onFormChange,
+  isGenerating = false,
+  isRetry = false,
+}) => {
   const {
     watch,
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
+    getValues,
   } = useForm<LetterFormData>({
     defaultValues: {
       company: '',
@@ -27,41 +38,24 @@ const LetterForm = () => {
       skillsList: '',
       additionalDetails: '',
     },
+    mode: 'onChange',
   })
 
+  const formValues = watch()
   const additionalDetailsValue = watch('additionalDetails') || ''
 
-  const onSubmit = async (data: LetterFormData) => {
-    setIsLoading(true)
-
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-
-      const generatedText = `Dear ${data.company} Team,
-I am writing to express my interest in the ${data.jobTitle} position.My experience in the realm combined with my skills in ${data.skillsList} make me a strong candidate for this role.
-${data.additionalDetails}
-I am confident that my skills and enthusiasm would translate into valuable contributions to your esteemed organization.
-Thank you for considering my application. I eagerly await the opportunity to discuss my qualifications further.`
-
-      createLetter(generatedText)
-    } catch (error) {
-      console.error('Error generating letter:', error)
-    } finally {
-      setIsLoading(false)
+  useEffect(() => {
+    if (onFormChange && formValues) {
+      onFormChange(getValues(), isValid)
     }
-  }
+  }, [formValues, isValid, onFormChange, getValues])
 
-  const onSubmitHandler = async (data: LetterFormData) => {
-    setIsLoading(true)
-    try {
-      await onSubmit(data)
-    } finally {
-      setIsLoading(false)
-    }
-  }
+  const onSubmitHandler = handleSubmit(async (data) => {
+    await onSubmit(data)
+  })
 
   return (
-    <form className={st.form} onSubmit={handleSubmit(onSubmitHandler)}>
+    <form className={st.form} onSubmit={onSubmitHandler}>
       <div className={st.fieldGroup}>
         <div className={st.field}>
           <label className={st.label}>Job title</label>
@@ -72,9 +66,9 @@ Thank you for considering my application. I eagerly await the opportunity to dis
             render={({ field }) => (
               <input
                 {...field}
-                className={st.input}
+                className={cn(st.input, { [st.errorInput]: errors.jobTitle })}
                 placeholder='Product manager'
-                disabled={isLoading}
+                disabled={isGenerating}
               />
             )}
           />
@@ -92,9 +86,9 @@ Thank you for considering my application. I eagerly await the opportunity to dis
             render={({ field }) => (
               <input
                 {...field}
-                className={st.input}
+                className={cn(st.input, { [st.errorInput]: errors.company })}
                 placeholder='Apple'
-                disabled={isLoading}
+                disabled={isGenerating}
               />
             )}
           />
@@ -113,9 +107,10 @@ Thank you for considering my application. I eagerly await the opportunity to dis
           render={({ field }) => (
             <input
               {...field}
-              className={st.input}
+              className={cn(st.input, { [st.errorInput]: errors.skillsList })}
               placeholder='HTML, CSS and doing things in time'
-              disabled={isLoading}
+              disabled={isGenerating}
+              autoComplete='off'
             />
           )}
         />
@@ -130,6 +125,7 @@ Thank you for considering my application. I eagerly await the opportunity to dis
           name='additionalDetails'
           control={control}
           rules={{
+            required: 'Details is required',
             maxLength: {
               value: MAX_CHARTS,
               message: `Max length is ${MAX_CHARTS}`,
@@ -138,10 +134,11 @@ Thank you for considering my application. I eagerly await the opportunity to dis
           render={({ field }) => (
             <textarea
               {...field}
-              className={st.textarea}
+              className={cn(st.textarea, {
+                [st.errorInput]: errors.additionalDetails,
+              })}
               placeholder='Describe why you are a great fit or paste your bio'
-              disabled={isLoading}
-              maxLength={MAX_CHARTS}
+              disabled={isGenerating}
             />
           )}
         />
@@ -150,13 +147,34 @@ Thank you for considering my application. I eagerly await the opportunity to dis
         >
           {additionalDetailsValue.length}/{MAX_CHARTS}
         </span>
+        {errors.additionalDetails && (
+          <span className={st.error}>{errors.additionalDetails.message}</span>
+        )}
       </div>
 
-      <button type='submit' className={st.submitButton} disabled={isLoading}>
-        {isLoading ? <IconLoading /> : 'Generate Now'}
-      </button>
+      <Button
+        type='submit'
+        variant={isRetry ? 'secondary' : 'primary'}
+        className={cn(
+          st.submitButton,
+          { [st.retry]: isRetry },
+          { [st.loading]: isGenerating }
+        )}
+        disabled={isGenerating || !isValid}
+      >
+        {isGenerating ? (
+          <IconLoading className={st.loadingIcon} />
+        ) : isRetry ? (
+          <>
+            <IconRepeat className={st.repeatIcon} />
+            Try Again
+          </>
+        ) : (
+          'Generate Now'
+        )}
+      </Button>
     </form>
   )
 }
 
-export default LetterForm
+export default memo(LetterForm)

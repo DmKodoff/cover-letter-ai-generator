@@ -1,16 +1,25 @@
-@use '../../../styles/variables.scss' as *;
-@use '../../../styles/mixins.scss' as *;
+@use '@/styles' as *;
 
 .form {
   @include flex-column;
-  gap: $spacing-lg;
+  gap: $spacing-md;
   max-width: 600px;
   margin: 0 auto;
 }
 
+.fieldGroup {
+  display: flex;
+  gap: $spacing-md;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
 .field {
   @include flex-column;
-  gap: &spacing-xs;
+  gap: 5px;
+  flex: 1;
 }
 
 .label {
@@ -28,10 +37,28 @@
   }
 }
 
+.errorInput {
+  border-color: $error-color;
+
+  &:focus {
+    border-color: $error-color;
+    box-shadow: 0 0 0 4px rgba($error-color, 0.2),
+      0 1px 2px 0 rgba(16, 24, 40, 0.05);
+  }
+}
+
 .textarea {
   @extend .input;
-  min-height: 120px;
-  resize: vertical;
+  resize: none;
+  min-height: 242px;
+  padding: 12px;
+}
+
+.charCount {
+  font-size: $font-size-sm;
+  line-height: 20px;
+  color: $text-secondary;
+  text-align: left;
 }
 
 .error {
@@ -39,26 +66,51 @@
   color: $error-color;
 }
 
-.charCount {
-  font-size: $font-size-xs;
-  color: $text-secondary;
-  text-align: right;
-  margin-top: 4px;
-}
-
 .submitButton {
   @include button-base;
-  background-color: $primary-color;
-  color: $background-color;
-  border: none;
-  margin-top: $spacing-md;
+  @include flex-center;
+  position: relative;
+  gap: $spacing-xs;
+  color: $white;
+  background-color: $primary-darker;
+  border: 1px solid $primary-darker;
+  border-radius: $border-radius;
+  box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+  font-weight: 600;
+  font-size: $font-size-lg;
+  line-height: 28px;
+  height: 60px;
+  padding: 16px 28px;
 
   &:hover:not(:disabled) {
     opacity: 0.9;
   }
 
   &:disabled {
-    opacity: 0.7;
+    border: 1px solid $border-light;
+    background: $border-light;
+    color: #98a2b3;
     cursor: not-allowed;
+
+    &.loading {
+      background-color: $primary-color;
+      color: $white;
+
+      &.retry {
+        background-color: $background-secondary;
+        color: $text-color;
+        border: 1px solid $border-color;
+      }
+    }
   }
+}
+
+.loadingIcon {
+  @include spin;
+  height: $spacing-lg;
+}
+
+.repeatIcon {
+  width: $spacing-md;
+  height: $spacing-md;
 }
