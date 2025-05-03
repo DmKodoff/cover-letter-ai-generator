@@ -3,11 +3,19 @@
 .header {
   @include flex-between;
   background-color: $background-color;
+  padding-top: $spacing-lg;
+  padding-bottom: $spacing-xl;
   max-width: 1120px;
+  height: $header-height;
   margin-inline: auto;
-  margin-top: $spacing-lg;
-  margin-bottom: $spacing-xl;
-  padding: 0;
+
+  @include mobile {
+    height: $header-height-mobile;
+    padding-top: $spacing-md;
+    padding-bottom: $spacing-lg;
+    padding-inline: $spacing-md;
+    width: 100%;
+  }
 }
 
 .logo {
@@ -45,5 +53,9 @@
   &:hover {
     color: $primary-color;
     border: 1px solid $primary-color;
+  }
+
+  @include mobile {
+    display: none;
   }
 }

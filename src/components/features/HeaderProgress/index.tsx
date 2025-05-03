@@ -28,7 +28,8 @@ const HeaderProgress = () => {
 
   return (
     <div className={st.progressBarWrapper}>
-      {currentLettersCount}/{minCountLetters} applications generated {progress}
+      {currentLettersCount}/{minCountLetters}{' '}
+      <span className={st.text}>applications generated</span> {progress}
     </div>
   )
 }

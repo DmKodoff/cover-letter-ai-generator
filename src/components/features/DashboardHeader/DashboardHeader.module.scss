@@ -5,6 +5,12 @@
   flex: 1;
   padding-bottom: $spacing-md;
   border-bottom: 1px solid $border-divider;
+
+  @include mobile {
+    padding: 0 $spacing-sm $spacing-sm;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
 }
 
 .title {
@@ -14,6 +20,11 @@
   line-height: 1.25;
   letter-spacing: -0.02em;
   color: $text-primary;
+
+  @include mobile {
+    font-size: 32px;
+    line-height: 1.2;
+  }
 }
 
 .btn {
@@ -21,6 +32,11 @@
   gap: 10px;
   padding-block: 10px;
   padding-inline: $font-size-lg;
+
+  @include mobile {
+    padding-inline: $font-size-md;
+    padding-block: 8px;
+  }
 }
 
 .icon {

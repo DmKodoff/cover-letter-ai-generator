@@ -3,9 +3,17 @@
 .icon {
   width: 20px;
   margin-right: 8px;
+
+  @include mobile {
+    width: $spacing-md;
+  }
 }
 
 .buttonText {
   font-size: $font-size-md;
   line-height: $spacing-lg;
+
+  @include mobile {
+    display: none;
+  }
 }

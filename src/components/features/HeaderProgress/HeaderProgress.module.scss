@@ -7,6 +7,11 @@
   gap: $spacing-md;
   font-size: $font-size-lg;
   line-height: 28px;
+
+  @include mobile {
+    font-size: $font-size-md;
+    gap: $spacing-sm;
+  }
 }
 
 .success {
@@ -16,4 +21,10 @@
   color: $primary-light;
   width: 28px;
   height: 28px;
+}
+
+.text {
+  @include mobile {
+    display: none;
+  }
 }

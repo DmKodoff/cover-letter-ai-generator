@@ -3,6 +3,11 @@
 .main {
   background-color: $background-color;
   max-width: 1120px;
-  min-height: 100vh;
+  min-height: calc(100vh - $header-height);
   margin: 0 auto;
+
+  @include mobile {
+    padding-inline: $spacing-md;
+    min-height: calc(100vh - $header-height-mobile);
+  }
 }

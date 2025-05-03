@@ -23,6 +23,10 @@
   position: relative;
   box-shadow: $box-shadow;
   animation: slideIn $transition-duration $transition-timing;
+
+  @include mobile {
+    margin-inline: $spacing-md;
+  }
 }
 
 .closeButton {

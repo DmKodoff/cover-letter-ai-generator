@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState, useRef, useEffect } from 'react'
 import cn from 'classnames'
 
 import LetterForm from '@/components/features/LetterForm'
@@ -39,6 +39,20 @@ const CreateCV = () => {
     setFormData(data)
   }, [])
 
+  const previewRef = useRef<HTMLDivElement>(null)
+
+  const scrollToPreview = useCallback(() => {
+    if (previewRef.current) {
+      previewRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [])
+
+  useEffect(() => {
+    if (generatedLetter && !isGenerating) {
+      scrollToPreview()
+    }
+  }, [generatedLetter, isGenerating, scrollToPreview])
+
   const handleSubmit = useCallback(
     async (data: LetterFormData) => {
       await generateLetter(data)
@@ -69,7 +83,7 @@ const CreateCV = () => {
         />
       </div>
 
-      <div className={st.previewColumn}>
+      <div className={st.previewColumn} ref={previewRef}>
         <LetterPreview
           isGenerating={isGenerating}
           generatedLetter={generatedLetter}

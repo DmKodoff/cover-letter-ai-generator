@@ -5,6 +5,10 @@
   gap: $spacing-md;
   max-width: 600px;
   margin: 0 auto;
+
+  @include mobile {
+    gap: $spacing-sm;
+  }
 }
 
 .fieldGroup {
@@ -13,6 +17,7 @@
 
   @media (max-width: 600px) {
     flex-direction: column;
+    gap: $spacing-sm;
   }
 }
 
@@ -52,6 +57,10 @@
   resize: none;
   min-height: 242px;
   padding: 12px;
+
+  @include mobile {
+    min-height: 180px;
+  }
 }
 
 .charCount {
@@ -81,6 +90,13 @@
   line-height: 28px;
   height: 60px;
   padding: 16px 28px;
+
+  @include mobile {
+    height: 50px;
+    font-size: $font-size-md;
+    padding: 12px 20px;
+    width: 100%;
+  }
 
   &:hover:not(:disabled) {
     opacity: 0.9;
