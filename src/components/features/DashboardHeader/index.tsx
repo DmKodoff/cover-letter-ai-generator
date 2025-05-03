@@ -1,9 +1,16 @@
+import cn from 'classnames'
+
 import { IconPlus } from '@/assets'
-import st from './DashboardHeader.module.scss'
 import Button from '@/components/ui/Button'
 
-const DashboardHeader = () => (
-  <div className={st.container}>
+import st from './DashboardHeader.module.scss'
+
+type TProps = {
+  className?: string
+}
+
+const DashboardHeader: React.FC<TProps> = ({ className }) => (
+  <div className={cn(st.container, className)}>
     <h1 className={st.title}>Applications</h1>
     <Button variant='primary' href='/create' className={st.btn}>
       <IconPlus className={st.icon} />

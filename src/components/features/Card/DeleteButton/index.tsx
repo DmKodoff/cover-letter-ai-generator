@@ -20,16 +20,20 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({
 }) => {
   const { openDialog, Dialog } = useDialog()
 
-  const handleDelete = async () => {
-    const confirmed = await openDialog(ConfirmDialog, {
+  const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    openDialog(ConfirmDialog, {
       title: 'Delete letter',
       message: 'Are you sure you want to delete this letter?',
       variant: 'danger',
+    }).then((confirmed) => {
+      if (confirmed) {
+        onDelete()
+      } else {
+        console.log('Delete canceled')
+        e.stopPropagation()
+      }
     })
-
-    if (confirmed) {
-      onDelete()
-    }
   }
 
   return (

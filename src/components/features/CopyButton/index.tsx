@@ -31,7 +31,8 @@ const CopyButton: React.FC<CopyButtonProps> = ({
     }
   }, [isCopied])
 
-  const handleCopy = () => {
+  const handleCopy = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
     navigator.clipboard.writeText(text)
     setIsCopied(true)
   }

@@ -1,9 +1,11 @@
 import cn from 'classnames'
+import { useState } from 'react'
 
 import { useLetterStore } from '@/store/letterStore'
 
 import CopyButton from '../CopyButton'
 import DeleteButton from './DeleteButton'
+import LetterDialog from '../LetterDialog'
 
 import st from './LetterCard.module.scss'
 
@@ -18,25 +20,45 @@ const LetterCard: React.FC<LetterCardProps> = ({
   content,
   className = '',
 }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const deleteLetter = useLetterStore.use.deleteLetter()
 
   const handleDelete = () => {
     deleteLetter(id)
   }
 
+  const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation()
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
   const previewContent = content.split('\n').slice(0, 6).join('\n')
 
   return (
-    <div className={cn(st.card, className)}>
-      <div className={st.content}>
-        <p className={st.text}>{previewContent}</p>
-        <div className={st.overlay} />
+    <>
+      <div className={cn(st.card, className)}>
+        <div className={st.content}>
+          <p onClick={handleCardClick} className={st.text}>
+            {previewContent}
+          </p>
+          <div className={st.overlay} />
+        </div>
+        <div className={st.actions}>
+          <DeleteButton onDelete={handleDelete} className={st.deleteButton} />
+          <CopyButton text={content} className={st.copyButton} />
+        </div>
       </div>
-      <div className={st.actions}>
-        <DeleteButton onDelete={handleDelete} className={st.deleteButton} />
-        <CopyButton text={content} className={st.copyButton} />
-      </div>
-    </div>
+
+      <LetterDialog
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        letter={content}
+      />
+    </>
   )
 }
 

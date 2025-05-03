@@ -37,15 +37,23 @@ export const useDialog = () => {
     []
   )
 
-  const handleConfirm = useCallback(() => {
-    setIsOpen(false)
-    if (resolveRef) resolveRef(true)
-  }, [resolveRef])
+  const handleConfirm = useCallback(
+    (e?: React.MouseEvent<HTMLButtonElement>) => {
+      e?.stopPropagation()
+      setIsOpen(false)
+      if (resolveRef) resolveRef(true)
+    },
+    [resolveRef]
+  )
 
-  const handleCancel = useCallback(() => {
-    setIsOpen(false)
-    if (resolveRef) resolveRef(false)
-  }, [resolveRef])
+  const handleCancel = useCallback(
+    (e?: React.MouseEvent<HTMLButtonElement>) => {
+      e?.stopPropagation()
+      setIsOpen(false)
+      if (resolveRef) resolveRef(false)
+    },
+    [resolveRef]
+  )
 
   const Dialog = useCallback(() => {
     if (!DialogComponent || !isOpen) return null

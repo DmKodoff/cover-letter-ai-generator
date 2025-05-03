@@ -6,7 +6,7 @@ import st from './Button.module.scss'
 type ButtonProps = {
   children: React.ReactNode
   variant?: 'primary' | 'secondary' | 'clear' | 'danger'
-  onClick?: () => void
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   type?: 'button' | 'submit' | 'reset'
   disabled?: boolean
   className?: string

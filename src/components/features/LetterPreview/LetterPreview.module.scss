@@ -37,15 +37,14 @@
   }
 }
 
+.ballLoader {
+  @include spin;
+  width: 320px;
+  height: 320px;
+}
+
 .loaderContainer {
   @include flex-center;
   height: 100%;
   width: 100%;
-}
-
-.ballLoader {
-  @include spin;
-  aspect-ratio: 1 / 1;
-  width: auto;
-  height: 320px;
 }
