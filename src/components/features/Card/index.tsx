@@ -48,8 +48,8 @@ const LetterCard: React.FC<LetterCardProps> = ({
           <div className={st.overlay} />
         </div>
         <div className={st.actions}>
-          <DeleteButton onDelete={handleDelete} className={st.deleteButton} />
-          <CopyButton text={content} className={st.copyButton} />
+          <DeleteButton onDelete={handleDelete} className={st.btn} />
+          <CopyButton text={content} className={st.btn} />
         </div>
       </div>
 

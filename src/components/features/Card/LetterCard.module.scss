@@ -51,35 +51,6 @@
   background: linear-gradient(to bottom, transparent, $background-tertiary);
 }
 
-.letterModal {
-  max-width: 800px;
-  width: 90%;
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
-.modalContent {
-  padding: $spacing-md;
-}
-
-.modalTitle {
-  font-size: $font-size-xl;
-  font-weight: 600;
-  margin-bottom: $spacing-lg;
-  color: $text-primary;
-}
-
-.modalText {
-  white-space: pre-line;
-  font-size: $font-size-md;
-  line-height: 1.6;
-  color: $text-secondary;
-
-  p {
-    margin-bottom: $spacing-sm;
-  }
-}
-
 .actions {
   @include flex-between;
   padding-top: $spacing-md;
@@ -95,8 +66,7 @@
   }
 }
 
-.deleteButton,
-.copyButton {
+.btn {
   line-height: $spacing-lg;
   font-size: $font-size-md;
   color: $text-tertiary;

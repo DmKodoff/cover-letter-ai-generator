@@ -2,9 +2,10 @@
 
 .main {
   background-color: $background-color;
-  max-width: 1120px;
+  max-width: $max-width;
   min-height: calc(100vh - $header-height);
   margin: 0 auto;
+  padding: $spacing-md;
 
   @include mobile {
     padding-inline: $spacing-md;

@@ -3,17 +3,17 @@
 .header {
   @include flex-between;
   background-color: $background-color;
+  height: $header-height;
+  max-width: $max-width;
+  padding-inline: $spacing-md;
   padding-top: $spacing-lg;
   padding-bottom: $spacing-xl;
-  height: $header-height;
-  max-width: 1120px;
   margin-inline: auto;
 
   @include mobile {
     height: $header-height-mobile;
     padding-top: $spacing-md;
     padding-bottom: $spacing-lg;
-    padding-inline: $spacing-md;
     width: 100%;
   }
 }

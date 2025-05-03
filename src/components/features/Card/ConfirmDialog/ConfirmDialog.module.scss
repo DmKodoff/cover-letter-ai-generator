@@ -1,0 +1,16 @@
+@use '@/styles' as *;
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $spacing-md;
+  margin-top: $spacing-xl;
+}
+
+.title {
+  font-family: $fixel-display;
+  font-weight: 600;
+  font-size: $font-size-xl;
+  color: $text-primary;
+  margin-bottom: $spacing-md;
+}

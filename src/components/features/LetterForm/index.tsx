@@ -128,7 +128,7 @@ const LetterForm: React.FC<LetterFormProps> = ({
             required: 'Details is required',
             maxLength: {
               value: MAX_CHARTS,
-              message: `Max length is ${MAX_CHARTS}`,
+              message: '',
             },
           }}
           render={({ field }) => (

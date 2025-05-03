@@ -1,5 +1,6 @@
 import Button from '@/components/ui/Button'
-import st from '@/components/ui/Modal/Modal.module.scss'
+
+import st from './ConfirmDialog.module.scss'
 
 type ConfirmDialogProps = {
   onConfirm: (e?: React.MouseEvent<HTMLButtonElement>) => void
