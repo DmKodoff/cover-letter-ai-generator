@@ -6,7 +6,7 @@ type TProps = {
   children: React.ReactNode
 }
 
-export const Layout = ({ children }: TProps) => {
+export const Layout: React.FC<TProps> = ({ children }) => {
   return (
     <>
       <Header />

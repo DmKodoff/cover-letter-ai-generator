@@ -7,8 +7,8 @@ import fontFixelText from '@/assets/fonts/fontFixelText'
 import '../styles/main.scss'
 
 export const metadata = {
-  title: 'CV generator',
-  description: 'Generated CV',
+  title: 'Cover Letter generator',
+  description: 'AI Cover Letter generator',
 }
 
 type TProps = {

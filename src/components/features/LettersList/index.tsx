@@ -12,12 +12,14 @@ type TProps = {
 
 const LettersList: React.FC<TProps> = ({ className }) => {
   const letters = useLetterStore.use.letters()
+
+  if (!letters?.length) return null
+
   return (
     <div className={cn(st.list, className)}>
-      {letters.length > 0 &&
-        letters.map((letter) => (
-          <LetterCard key={letter.id} id={letter.id} content={letter.content} />
-        ))}
+      {letters.map((letter) => (
+        <LetterCard key={letter.id} id={letter.id} content={letter.content} />
+      ))}
     </div>
   )
 }
