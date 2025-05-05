@@ -1,0 +1,62 @@
+@use '@/styles' as *;
+@use 'sass:color';
+
+.container {
+  @include flex-column;
+  gap: 5px;
+  width: 100%;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: 500;
+  color: $text-color;
+}
+
+.textarea {
+  @include input-base;
+  resize: none;
+  min-height: 242px;
+  padding: 12px;
+
+  &:disabled {
+    color: $text-tertiary;
+    cursor: not-allowed;
+  }
+
+  @include mobile {
+    min-height: 180px;
+  }
+}
+
+.errorInput {
+  border-color: $error-color;
+
+  &:focus {
+    border-color: $error-color;
+    box-shadow: 0 0 0 4px color.change($error-color, $alpha: 0.1),
+      0 1px 2px 0 transparent;
+  }
+}
+
+.bottomRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.charCount {
+  font-size: $font-size-sm;
+  line-height: 20px;
+  color: $text-secondary;
+  text-align: left;
+}
+
+.error {
+  font-size: $font-size-xs;
+  color: $error-color;
+}

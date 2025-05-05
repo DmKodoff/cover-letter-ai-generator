@@ -1,19 +1,21 @@
 'use client'
 
+import { memo, useEffect, useMemo } from 'react'
 import cn from 'classnames'
 import { useForm, Controller } from 'react-hook-form'
-import { memo, useEffect } from 'react'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 import { IconLoading, IconRepeat } from '@/assets'
-
-import st from './LetterForm.module.scss'
+import Input from '@/components/ui/Input'
+import TextArea from '@/components/ui/TextArea'
 import Button from '@/components/ui/Button'
 
-const MAX_CHARTS = 1200
+import { letterFormSchema, MAX_CHARS } from './validationSchema'
+import st from './LetterForm.module.scss'
 
 type LetterFormProps = {
   onSubmit: (data: LetterFormData) => Promise<void>
-  onFormChange?: (data: LetterFormData, isValid: boolean) => void
+  onFormChange?: (data: LetterFormData) => void
   isGenerating?: boolean
   isRetry?: boolean
   onRetry?: () => void
@@ -30,7 +32,6 @@ const LetterForm: React.FC<LetterFormProps> = ({
     control,
     handleSubmit,
     formState: { errors, isValid },
-    getValues,
   } = useForm<LetterFormData>({
     defaultValues: {
       company: '',
@@ -38,6 +39,7 @@ const LetterForm: React.FC<LetterFormProps> = ({
       skillsList: '',
       additionalDetails: '',
     },
+    resolver: yupResolver(letterFormSchema),
     mode: 'onChange',
   })
 
@@ -46,132 +48,105 @@ const LetterForm: React.FC<LetterFormProps> = ({
 
   useEffect(() => {
     if (onFormChange && formValues) {
-      onFormChange(getValues(), isValid)
+      onFormChange(formValues)
     }
-  }, [formValues, isValid, onFormChange, getValues])
+  }, [formValues, onFormChange])
 
   const onSubmitHandler = handleSubmit(async (data) => {
     await onSubmit(data)
   })
 
+  const buttonText = useMemo(() => {
+    if (isGenerating) {
+      return <IconLoading className={st.loadingIcon} />
+    }
+
+    if (isRetry) {
+      return (
+        <>
+          <IconRepeat className={st.repeatIcon} />
+          Try Again
+        </>
+      )
+    }
+
+    return 'Generate Now'
+  }, [isGenerating, isRetry])
+
   return (
     <form className={st.form} onSubmit={onSubmitHandler}>
       <div className={st.fieldGroup}>
-        <div className={st.field}>
-          <label className={st.label}>Job title</label>
-          <Controller
-            name='jobTitle'
-            control={control}
-            rules={{ required: 'Job title is required' }}
-            render={({ field }) => (
-              <input
-                {...field}
-                className={cn(st.input, { [st.errorInput]: errors.jobTitle })}
-                placeholder='Product manager'
-                disabled={isGenerating}
-              />
-            )}
-          />
-          {errors.jobTitle && (
-            <span className={st.error}>{errors.jobTitle.message}</span>
-          )}
-        </div>
-
-        <div className={st.field}>
-          <label className={st.label}>Company</label>
-          <Controller
-            name='company'
-            control={control}
-            rules={{ required: 'Company name is required' }}
-            render={({ field }) => (
-              <input
-                {...field}
-                className={cn(st.input, { [st.errorInput]: errors.company })}
-                placeholder='Apple'
-                disabled={isGenerating}
-              />
-            )}
-          />
-          {errors.company && (
-            <span className={st.error}>{errors.company.message}</span>
-          )}
-        </div>
-      </div>
-
-      <div className={st.field}>
-        <label className={st.label}>I am good at...</label>
         <Controller
-          name='skillsList'
+          name='jobTitle'
           control={control}
-          rules={{ required: 'Skills is required' }}
           render={({ field }) => (
-            <input
+            <Input
               {...field}
-              className={cn(st.input, { [st.errorInput]: errors.skillsList })}
-              placeholder='HTML, CSS and doing things in time'
+              label='Job title'
+              placeholder='Product manager'
               disabled={isGenerating}
-              autoComplete='off'
+              error={errors.jobTitle?.message}
+              fullWidth
             />
           )}
         />
-        {errors.skillsList && (
-          <span className={st.error}>{errors.skillsList.message}</span>
-        )}
-      </div>
 
-      <div className={st.field}>
-        <label className={st.label}>Additional details</label>
         <Controller
-          name='additionalDetails'
+          name='company'
           control={control}
-          rules={{
-            required: 'Details is required',
-            maxLength: {
-              value: MAX_CHARTS,
-              message: '',
-            },
-          }}
           render={({ field }) => (
-            <textarea
+            <Input
               {...field}
-              className={cn(st.textarea, {
-                [st.errorInput]: errors.additionalDetails,
-              })}
-              placeholder='Describe why you are a great fit or paste your bio'
+              label='Company'
+              placeholder='Apple'
               disabled={isGenerating}
+              error={errors.company?.message}
+              fullWidth
             />
           )}
         />
-        <span
-          className={cn(st.charCount, { [st.error]: errors.additionalDetails })}
-        >
-          {additionalDetailsValue.length}/{MAX_CHARTS}
-        </span>
-        {errors.additionalDetails && (
-          <span className={st.error}>{errors.additionalDetails.message}</span>
-        )}
       </div>
+
+      <Controller
+        name='skillsList'
+        control={control}
+        render={({ field }) => (
+          <Input
+            {...field}
+            label='I am good at...'
+            placeholder='HTML, CSS and doing things in time'
+            disabled={isGenerating}
+            error={errors.skillsList?.message}
+            autoComplete='off'
+            fullWidth
+          />
+        )}
+      />
+
+      <Controller
+        name='additionalDetails'
+        control={control}
+        render={({ field }) => (
+          <TextArea
+            {...field}
+            label='Additional details'
+            placeholder='Describe why you are a great fit or paste your bio'
+            disabled={isGenerating}
+            error={errors.additionalDetails?.message}
+            charCount={additionalDetailsValue.length}
+            maxChars={MAX_CHARS}
+            fullWidth
+          />
+        )}
+      />
 
       <Button
         type='submit'
         variant={isRetry ? 'secondary' : 'primary'}
-        className={cn(
-          st.submitButton,
-          { [st.retry]: isRetry },
-          { [st.loading]: isGenerating }
-        )}
+        className={cn(st.submitButton, { [st.retry]: isRetry })}
         disabled={isGenerating || !isValid}
       >
-        {isGenerating ? (
-          <IconLoading className={st.loadingIcon} />
-        ) : isRetry ? (
-          <>
-            <IconRepeat className={st.repeatIcon} />
-            Try Again
-          </>
-        ) : (
-          'Generate Now'
-        )}
+        {buttonText}
       </Button>
     </form>
   )

@@ -5,20 +5,20 @@ $max-width: 1152px;
 $primary-color: #2e7d32;
 $primary-light: #4caf50;
 $primary-dark: #1b5e20;
-$primary-darker: #087443; // Цвет кнопки из дизайна
-$primary-bg-light: #edfcf2; // Светлый фон для блоков
+$primary-darker: #087443;
+$primary-bg-light: #edfcf2;
 
 // Текстовые цвета
 $text-color: #344054;
-$text-primary: #101828; // Основной текст из дизайна
-$text-secondary: #667085; // Вторичный текст из дизайна
-$text-tertiary: #475467; // Третичный текст из дизайна
+$text-primary: #101828;
+$text-secondary: #667085;
+$text-tertiary: #475467;
 $text-light: #ededed;
 
 // Фоновые цвета
 $background-color: white;
 $background-secondary: #f5f5f5;
-$background-tertiary: #f2f4f7; // Третичный фон из дизайна
+$background-tertiary: #f2f4f7;
 
 $error-color: #f04438;
 
@@ -60,15 +60,6 @@ $box-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
 // Анимации
 $transition-duration: 0.3s;
 $transition-timing: ease-in-out;
-
-//#101828
-
-//background: #101828;
-//opacity: 0.24;
-
-//#475467
-//#667085
-//#F2F4F7
 
 $gray-500: #475467;
 $gray-400: #667085;

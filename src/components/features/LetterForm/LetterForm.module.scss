@@ -21,69 +21,11 @@
   }
 }
 
-.field {
-  @include flex-column;
-  gap: 5px;
-  flex: 1;
-}
-
-.label {
-  font-size: $font-size-sm;
-  font-weight: 500;
-  color: $text-color;
-}
-
-.input {
-  @include input-base;
-
-  &:disabled {
-    color: $text-tertiary;
-    cursor: not-allowed;
-  }
-}
-
-.errorInput {
-  border-color: $error-color;
-
-  &:focus {
-    border-color: $error-color;
-    box-shadow: 0 0 0 4px rgba($error-color, 0.2),
-      0 1px 2px 0 rgba(16, 24, 40, 0.05);
-  }
-}
-
-.textarea {
-  @extend .input;
-  resize: none;
-  min-height: 242px;
-  padding: 12px;
-
-  @include mobile {
-    min-height: 180px;
-  }
-}
-
-.charCount {
-  font-size: $font-size-sm;
-  line-height: 20px;
-  color: $text-secondary;
-  text-align: left;
-}
-
-.error {
-  font-size: $font-size-xs;
-  color: $error-color;
-}
-
 .submitButton {
-  @include button-base;
-  @include flex-center;
   position: relative;
   gap: $spacing-xs;
-  color: $white;
   background-color: $primary-darker;
   border: 1px solid $primary-darker;
-  border-radius: $border-radius;
   box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
   font-weight: 600;
   font-size: $font-size-lg;
@@ -102,31 +44,27 @@
     opacity: 0.9;
   }
 
+  &.retry {
+    background-color: $background-secondary;
+    color: $text-color;
+    border: 1px solid $border-color;
+  }
+
   &:disabled {
     border: 1px solid $border-light;
     background: $border-light;
     color: #98a2b3;
     cursor: not-allowed;
-
-    &.loading {
-      background-color: $primary-color;
-      color: $white;
-
-      &.retry {
-        background-color: $background-secondary;
-        color: $text-color;
-        border: 1px solid $border-color;
-      }
-    }
   }
 }
 
 .loadingIcon {
-  @include spin;
   height: $spacing-lg;
+  @include spin;
 }
 
 .repeatIcon {
-  width: $spacing-md;
-  height: $spacing-md;
+  width: $spacing-lg;
+  height: $spacing-lg;
+  margin-right: $spacing-xs;
 }
