@@ -34,7 +34,6 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({
       if (confirmed) {
         onDelete()
       } else {
-        console.log('Delete canceled')
         e.stopPropagation()
       }
     })

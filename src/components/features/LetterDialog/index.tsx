@@ -15,7 +15,7 @@ const LetterDialog: React.FC<LetterDialogProps> = ({
   isOpen,
   onClose,
   letter,
-  title = 'Letter text',
+  title = 'Cover Letter',
 }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} className={st.letterDialog}>

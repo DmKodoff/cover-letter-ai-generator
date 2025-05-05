@@ -6,6 +6,8 @@ This application allows you to create professional cover letters using the OpenA
 
 Cover Letter Generator is a web application that helps users quickly generate personalized cover letters for job applications. It uses the OpenAI API to produce professionally written letters based on the information provided by the user.
 
+### Deployed on Vercel: [Cover Letter Generator](https://cover-letter-ai-generator-dmkodoffs-projects.vercel.app/)
+
 ## Tech Stack
 
 - **Frontend**: React 19, Next.js 15.3

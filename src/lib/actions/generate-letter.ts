@@ -16,15 +16,17 @@ export async function generateLetter(
     const apiKey = process.env.OPENAI_API_KEY
 
     if (!apiKey) {
+      console.error('OpenAI API key not configured')
       return { error: 'OpenAI API key not configured' }
     }
 
     if (!params.company || !params.jobTitle) {
+      console.warn('Missing required fields in letter generation request')
       return { error: 'Missing required fields' }
     }
 
     const client = new OpenAI({
-      apiKey: apiKey,
+      apiKey,
     })
 
     const prompt = createCoverLetterPrompt(params)
