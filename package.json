@@ -1,10 +1,13 @@
 {
-  "name": "cv_gen_2",
+  "name": "cover-letter-ai-generator",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "description": "AI-powered cover letter generator",
+  "author": "Dmitrii Kotov",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
